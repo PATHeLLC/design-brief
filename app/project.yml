@@ -17,31 +17,19 @@ targets:
     platform: iOS
     sources:
       - path: RubiksCubeSolver
+        excludes:
+          - App/Info.plist
+          - Resources/**
     resources:
       - path: RubiksCubeSolver/Resources/Assets.xcassets
-    info:
-      path: RubiksCubeSolver/App/Info.plist
-      properties:
-        CFBundleDisplayName: Cube Solver
-        CFBundleShortVersionString: "0.1.0"
-        CFBundleVersion: "1"
-        UILaunchScreen: {}
-        UISupportedInterfaceOrientations:
-          - UIInterfaceOrientationPortrait
-        NSCameraUsageDescription: >-
-          Cube Solver needs the camera to see your Rubik's cube so it can
-          identify the sticker colors on each face and guide you through the
-          solve.
-        NSMicrophoneUsageDescription: >-
-          Not used. Present only because AVFoundation's camera capture session
-          may initialize audio inputs on some devices.
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.pathe.RubiksCubeSolver
         TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: NO
-        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
-        INFOPLIST_KEY_UIRequiresFullScreen: YES
+        INFOPLIST_FILE: RubiksCubeSolver/App/Info.plist
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "0.1.0"
   RubiksCubeSolverTests:
     type: bundle.unit-test
     platform: iOS

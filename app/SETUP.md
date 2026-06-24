@@ -10,13 +10,34 @@
 - An Anthropic API key (`https://console.anthropic.com/`). The app prompts
   for this on first launch and stores it in the iOS Keychain.
 
-## Generate the Xcode project
+## One-shot bootstrap (recommended)
+
+```sh
+cd app
+./bootstrap.sh
+```
+
+That installs XcodeGen if needed, generates the `.xcodeproj`, runs the unit
+tests on the first available iPhone simulator, and opens Xcode. Then in
+Xcode press ⌘R, tap **Try a demo cube** on the onboarding screen, and
+follow the guide flow.
+
+## Or do it manually
 
 ```sh
 cd app
 xcodegen generate
 open RubiksCubeSolver.xcodeproj
 ```
+
+## Running in the simulator (no camera)
+
+The iOS Simulator has no camera feed, so the **Start scanning** path will
+show a black preview and never advance. Tap **Try a demo cube** on the
+onboarding screen instead — it injects a known scrambled cube, runs the
+solver, and walks through the full guide UI. No Anthropic API key is
+required for the demo path; voice/text narration falls back to deterministic
+phrasing when the API key is absent.
 
 The generated `.xcodeproj` is git-ignored — regenerate after editing
 `project.yml` or adding files under `RubiksCubeSolver/`.

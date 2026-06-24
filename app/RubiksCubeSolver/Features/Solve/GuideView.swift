@@ -14,6 +14,14 @@ struct GuideView: View {
 
     var body: some View {
         ZStack {
+            // Gradient sits behind the camera preview so the simulator (no
+            // camera feed) and any device frame-drop both still show
+            // something to look at instead of a black rectangle.
+            LinearGradient(
+                colors: [Color(white: 0.08), Color(white: 0.18)],
+                startPoint: .top, endPoint: .bottom
+            ).ignoresSafeArea()
+
             CameraPreview(camera: appState.camera).ignoresSafeArea()
 
             if isComputing {

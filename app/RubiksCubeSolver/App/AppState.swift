@@ -55,6 +55,18 @@ final class AppState: ObservableObject {
         route = .scan
     }
 
+    /// Skip scanning and jump straight to method-pick using a known short
+    /// scramble. Lets the simulator (which has no camera) demonstrate the
+    /// full guide flow.
+    ///
+    /// Uses a 2-move scramble so the IDDFS solver finishes in milliseconds —
+    /// deeper scrambles can stall the scaffold search.
+    func beginDemo() {
+        var cube = CubeState.solved
+        cube.apply(Move.parseSequence("R U"))
+        route = .pickMethod(cube: cube)
+    }
+
     func didConfirmScan(cube: CubeState) {
         route = .pickMethod(cube: cube)
     }

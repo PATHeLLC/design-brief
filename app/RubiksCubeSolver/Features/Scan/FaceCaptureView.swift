@@ -11,6 +11,11 @@ struct FaceCaptureView: View {
 
     var body: some View {
         ZStack {
+            LinearGradient(
+                colors: [Color(white: 0.08), Color(white: 0.18)],
+                startPoint: .top, endPoint: .bottom
+            ).ignoresSafeArea()
+
             CameraPreview(camera: appState.camera)
                 .ignoresSafeArea()
 

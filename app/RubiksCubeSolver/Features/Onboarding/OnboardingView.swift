@@ -59,9 +59,23 @@ struct OnboardingView: View {
                 .controlSize(.large)
                 .frame(maxWidth: .infinity)
                 .disabled(!appState.cameraAuthorized || !appState.hasAPIKey)
+
+                Button("Try a demo cube") {
+                    appState.beginDemo()
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                .frame(maxWidth: .infinity)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 36)
+
+            Text("Demo skips the camera scan and uses a pre-scrambled cube — useful in the iOS Simulator, which has no camera.")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 36)
+                .padding(.bottom, 12)
         }
     }
 
